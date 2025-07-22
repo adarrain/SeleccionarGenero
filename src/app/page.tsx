@@ -10,8 +10,7 @@ type Gender = {
 
 async function getGenders(): Promise<Gender[]> {
   try {
-    // TODO: Replace with your actual backend URL
-    const response = await fetch('https://your-backend-url.com/api/genders');
+    const response = await fetch('https://restlb1.dnm.gov.ar/p8/api-rest-catalogos/api/generos');
     if (!response.ok) {
       console.error('Network response was not ok');
       return [];
