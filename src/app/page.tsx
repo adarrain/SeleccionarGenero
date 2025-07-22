@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GET as getGendersApi } from './api/genders/route';
 
 type Gender = {
   codigo: string;
@@ -11,7 +10,12 @@ type Gender = {
 
 async function getGenders(): Promise<Gender[]> {
   try {
-    const response = await getGendersApi();
+    // TODO: Replace with your actual backend URL
+    const response = await fetch('https://your-backend-url.com/api/genders');
+    if (!response.ok) {
+      console.error('Network response was not ok');
+      return [];
+    }
     const json = await response.json();
     if (json.error || !json.data) {
         console.error('API returned an error:', json.message);
